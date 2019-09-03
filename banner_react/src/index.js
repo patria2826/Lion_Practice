@@ -4,7 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let app;
+ReactDOM.render(<App ref={inst => {
+    app = inst;
+}} />, document.getElementById('root'));
+
+window.banner = function (instruction) {
+    if (instruction === 'open' || instruction === 'close' || instruction === 'toggle') {
+        app.banner(instruction)
+    } else {
+        console.error();
+    }
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
