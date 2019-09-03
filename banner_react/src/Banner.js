@@ -34,7 +34,7 @@ class Banner extends Component {
             if (this.state.bannerStat === 0 || this.state.bannerStat === 2) {
                 this.setState({ bannerStat: this.state.bannerStat + 1 });
                 this.transitioning();
-                setTimeout(() => { this.clearTimer(this.timer); console.log(this.timer); }, this.state.transTime);
+                setTimeout(() => { this.clearTimer(this.timer); console.log(this.timer._id);console.log('this.timer._id'); }, this.state.transTime);
             }
         } else {
             if (this.state.bannerStat === 0) {
@@ -45,7 +45,7 @@ class Banner extends Component {
             }
         }
     }
-    timer = null;
+    timer = 0;
     transitioning = () => {
         this.props.whenTransition();
         this.timer = setTimeout(
@@ -54,7 +54,7 @@ class Banner extends Component {
         return this.timer;
     }
     clearTimer = (timer) => {
-        console.log(this.timer);
+        console.log(this.timer._id);
         console.log(timer);
         clearInterval(timer);
         clearTimeout(timer);
