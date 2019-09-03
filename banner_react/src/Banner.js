@@ -65,7 +65,6 @@ class Banner extends Component {
         );
     }
     clearTimer = (timer) => {
-        console.log(this.myTimer)
         clearInterval(timer);
         clearTimeout(timer);
     }
