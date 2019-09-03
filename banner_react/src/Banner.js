@@ -61,7 +61,6 @@ class Banner extends Component {
         this.timer = setTimeout(
             this.transitioning, this.state.transTime / 31
         );
-        return this.timer;
     }
     clearTimer = (timer) => {
         clearInterval(timer);
