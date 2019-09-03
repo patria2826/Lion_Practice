@@ -25,7 +25,6 @@ const App = () => {
         console.log('When transitioning, say \'hi\'!!');
       }}
       transition={true} />
-    // transition={false} />
     // <Banner/>
   )
 }
