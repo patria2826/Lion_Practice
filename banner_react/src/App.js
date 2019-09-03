@@ -6,28 +6,29 @@ import './css/main.css';
 
 const App = () => {
   return (
-    <Banner
-      openAtStart={false}
-      button={
-        {
-          closeText: '收合',
-          openText: '展開',
-          class: 'btn',
-        }
-      }
-      class={
-        {
-          closed: 'closed',
-          closing: 'closing',
-          opened: 'opened',
-          opening: 'opening'
+    // <Banner
+    //   openAtStart={false}
+    //   button={
+    //     {
+    //       closeText: '收合',
+    //       openText: '展開',
+    //       class: 'btn',
+    //     }
+    //   }
+    //   class={
+    //     {
+    //       closed: 'closed',
+    //       closing: 'closing',
+    //       opened: 'opened',
+    //       opening: 'opening'
 
-        }}
-      whenTransition={function () {
-        console.log('whenTransition');
-      }}
-      transition={true} />
+    //     }}
+    //   whenTransition={function () {
+    //     console.log('whenTransition');
+    //   }}
+    //   transition={true} />
     // transition={false} />
+    <Banner/>
   )
 }
 export default App;

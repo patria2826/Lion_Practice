@@ -4,6 +4,26 @@ import Button from './Button';
 import { setTimeout } from 'timers';
 
 class Banner extends Component {
+    static defaultProps = {
+        openAtStart: true,
+        button:
+        {
+            closeText: '收合',
+            openText: '展開',
+            class: 'btn',
+        },
+        class: {
+            closed: 'closed',
+            closing: 'closing',
+            opened: 'opened',
+            opening: 'opening'
+        },
+        whenTransition:
+            function () {
+                console.log('whenTransition');
+            },
+        transition: true
+    }
     state = {
         transTime: 600,
         bannerStat: this.props.openAtStart ? 0 : 2
@@ -14,7 +34,7 @@ class Banner extends Component {
             if (this.state.bannerStat === 0 || this.state.bannerStat === 2) {
                 this.setState({ bannerStat: this.state.bannerStat + 1 });
                 this.transitioning();
-                // setTimeout(this.clearTimer(this.timer), this.state.transTime);
+                setTimeout(() => { this.clearTimer(this.timer); console.log(this.timer); }, this.state.transTime);
             }
         } else {
             if (this.state.bannerStat === 0) {
@@ -25,18 +45,17 @@ class Banner extends Component {
             }
         }
     }
-    counter = 1;
     timer = null;
     transitioning = () => {
-        this.counter++;
         this.props.whenTransition();
-        if (this.counter <= 30) {
-            this.timer = setTimeout(
-                this.transitioning, this.state.transTime / 30
-            );
-        }
+        this.timer = setTimeout(
+            this.transitioning, this.state.transTime / 30
+        );
+        return this.timer;
     }
     clearTimer = (timer) => {
+        console.log(this.timer);
+        console.log(timer);
         clearInterval(timer);
         clearTimeout(timer);
     }
