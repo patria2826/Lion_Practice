@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import bannerImg from './imgs/banner.png';
 import Button from './Button';
-import { setTimeout } from 'timers';
 
 class Banner extends Component {
     static defaultProps = {
