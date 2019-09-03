@@ -6,6 +6,7 @@ import { setTimeout } from 'timers';
 class Banner extends Component {
     static defaultProps = {
         openAtStart: true,
+        autoToggle: 3000,
         button:
         {
             closeText: '收合',
@@ -26,22 +27,31 @@ class Banner extends Component {
     }
     state = {
         transTime: 600,
-        bannerStat: this.props.openAtStart ? 0 : 2
+        bannerStat: this.props.openAtStart && this.props.autoToggle ? 0 : 2
     };
     bannerClasses = [this.props.class.opened, this.props.class.closing, this.props.class.closed, this.props.class.opening];
+    autoToggle = () => {
+        if (typeof this.props.autoToggle === 'number') {
+            setTimeout(this.toggleBanner, this.props.autoToggle);
+        }
+    }
     toggleBanner = () => {
         if (this.props.transition) {
             if (this.state.bannerStat === 0 || this.state.bannerStat === 2) {
                 this.setState({ bannerStat: this.state.bannerStat + 1 });
                 this.transitioning();
-                setTimeout(() => { this.clearTimer(this.timer._id); console.log('ssssssssssssss')}, this.state.transTime);               
+                setTimeout(() => {
+                    this.clearTimer(this.timer._id);
+                    if (this.state.bannerStat < 3) {
+                        this.setState({ bannerStat: this.state.bannerStat + 1 });
+                    } else { this.setState({ bannerStat: 0 }); }
+                }, this.state.transTime);
             }
         } else {
             if (this.state.bannerStat === 0) {
                 this.setState({ bannerStat: 2 })
             } else {
                 this.setState({ bannerStat: 0 })
-                console.log(this.timer)
             }
         }
     }
@@ -49,7 +59,7 @@ class Banner extends Component {
     transitioning = () => {
         this.props.whenTransition();
         this.timer = setTimeout(
-            this.transitioning, this.state.transTime / 30
+            this.transitioning, this.state.transTime / 31
         );
         return this.timer;
     }
@@ -57,7 +67,9 @@ class Banner extends Component {
         clearInterval(timer);
         clearTimeout(timer);
     }
-
+    componentDidMount() {
+        this.autoToggle();
+    }
     render() {
         const { bannerStat } = this.state;
         let fullClassName = this.props.transition ? 'banner transition ' : 'banner ';
@@ -80,10 +92,13 @@ class Banner extends Component {
         }
         return (
             <div className={fullClassName}>
-                <a className="wrap">
+                <a className="wrap" href='https://www.plurk.com/portal/'>
                     <img className="img" src={bannerImg} title="輸入廣告促銷說明文字" alt="輸入廣告促銷說明文字" />
                 </a>
-                <Button btnName={this.props.button.class} toggle={this.toggleBanner} btnText={bannerStat === 0 || bannerStat === 3 ? this.props.button.closeText : this.props.button.openText}></Button>
+                <Button
+                    btnName={this.props.button.class}
+                    toggle={this.toggleBanner}
+                    btnText={bannerStat === 0 || bannerStat === 3 ? this.props.button.closeText : this.props.button.openText}></Button>
             </div>
         );
     }
