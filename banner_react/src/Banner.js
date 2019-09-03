@@ -25,11 +25,11 @@ class Banner extends Component {
             },
         transition: true
     }
-    myTimer = '';
     state = {
         transTime: 600,
         bannerStat: this.props.openAtStart && this.props.autoToggle ? 0 : 2
     };
+    myTimer = '';
     bannerClasses = [this.props.class.opened, this.props.class.closing, this.props.class.closed, this.props.class.opening];
     autoToggle = () => {
         if (typeof this.props.autoToggle === 'number') {
@@ -42,7 +42,7 @@ class Banner extends Component {
                 this.setState({ bannerStat: this.state.bannerStat + 1 });
                 this.myTimer = setInterval(() => {
                     this.props.whenTransition()
-                }, this.state.transTime / 31);
+                }, this.state.transTime / 30);
                 setTimeout(() => {
                     this.clearTimer(this.myTimer);
                     if (this.state.bannerStat < 3) {
@@ -57,6 +57,12 @@ class Banner extends Component {
                 this.setState({ bannerStat: 0 })
             }
         }
+    }
+    transitioning = () => {
+        this.props.whenTransition();
+        this.myTimer = setTimeout(
+            this.transitioning, this.state.transTime / 30
+        );
     }
     clearTimer = (timer) => {
         console.log(this.myTimer)
