@@ -32,36 +32,46 @@ class Banner extends Component {
     bannerClasses = [this.props.class.opened, this.props.class.closing, this.props.class.closed, this.props.class.opening];
     autoToggle = () => {
         if (typeof this.props.autoToggle === 'number') {
-            setTimeout(this.toggleBanner, this.props.autoToggle);
+            setTimeout(this.toggle, this.props.autoToggle);
         }
     }
-    toggleBanner = () => {
+    open = () => {
         if (this.props.transition) {
-            if (this.state.bannerStat === 0 || this.state.bannerStat === 2) {
+            if (this.state.bannerStat === 2) {
                 this.setState({ bannerStat: this.state.bannerStat + 1 });
-                this.myTimer = setInterval(() => {
-                    this.props.whenTransition()
-                }, this.state.transTime / 30);
-                setTimeout(() => {
-                    this.clearTimer(this.myTimer);
-                    if (this.state.bannerStat < 3) {
-                        this.setState({ bannerStat: this.state.bannerStat + 1 });
-                    } else { this.setState({ bannerStat: 0 }); }
-                }, this.state.transTime);
+                this.whenTransitioning();
             }
         } else {
-            if (this.state.bannerStat === 0) {
-                this.setState({ bannerStat: 2 })
-            } else {
-                this.setState({ bannerStat: 0 })
-            }
+            this.setState({ bannerStat: 0 })
         }
     }
-    transitioning = () => {
-        this.props.whenTransition();
-        this.myTimer = setTimeout(
-            this.transitioning, this.state.transTime / 30
-        );
+    close = () => {
+        if (this.props.transition) {
+            if (this.state.bannerStat === 0) {
+                this.setState({ bannerStat: this.state.bannerStat + 1 });
+                this.whenTransitioning();
+            }
+        } else {
+            this.setState({ bannerStat: 2 })
+        }
+    }
+    toggle = () => {
+        if(this.state.bannerStat === 0){
+            this.close();
+        }else{
+            this.open();
+        }
+    }
+    whenTransitioning = () => {
+        this.myTimer = setInterval(() => {
+            this.props.whenTransition()
+        }, this.state.transTime / 30);
+        setTimeout(() => {
+            this.clearTimer(this.myTimer);
+            if (this.state.bannerStat < 3) {
+                this.setState({ bannerStat: this.state.bannerStat + 1 });
+            } else { this.setState({ bannerStat: 0 }); }
+        }, this.state.transTime);
     }
     clearTimer = (timer) => {
         clearInterval(timer);
@@ -97,7 +107,7 @@ class Banner extends Component {
                 </a>
                 <Button
                     btnName={this.props.button.class}
-                    toggle={this.toggleBanner}
+                    toggle={this.toggle}
                     btnText={bannerStat === 0 || bannerStat === 3 ? this.props.button.closeText : this.props.button.openText}></Button>
             </div>
         );
