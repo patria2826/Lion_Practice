@@ -93,6 +93,7 @@
 
     Module.prototype.autoToggle = function () {
         var $this = this;
+        console.log(this.option.autoToggle)
         if (typeof this.option.autoToggle === "boolean") {
             this.option.autoToggle ? this.$ele.removeClass(this.option.class.opened).addClass(this.option.class.closed) : '';
         } else if (typeof this.option.autoToggle === "number") {
@@ -130,8 +131,8 @@
                     module.toggle();
                 });
 
-                module.autoToggle();
                 module.openAtStart();
+                module.autoToggle();
             }
         });
     };
