@@ -58,7 +58,7 @@
     Module.prototype.open = function () {
         var opts = this.option, timer;
         this.$btn.text(opts.button.closeText);
-        if (opts.transition || this.$ele.hasClass(opts.class.closed)) {
+        if (opts.transition && this.$ele.hasClass(opts.class.closed)) {
             this.whenTrans();
             timer = this.timer;
             this.$ele.addClass('transition').removeClass(opts.class.closed).addClass(opts.class.opening);
@@ -99,7 +99,7 @@
             setTimeout(
                 function () {
                     $this.toggle();
-                }, this.option.autoToggle)
+                }, this.option.autoToggle);
         }
     }
 
