@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
-import Banner from './Banner';
-import './css/main.css';
+import Banner from '../Banner/Banner';
+import './App.css';
 
 class App extends Component {
   constructor(props) {

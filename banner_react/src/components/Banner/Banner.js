@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import bannerImg from './imgs/banner.png';
-import Button from './Button';
+import Button from '../Button/Button';
 
 class Banner extends Component {
     static defaultProps = {
