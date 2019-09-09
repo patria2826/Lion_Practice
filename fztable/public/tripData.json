@@ -1,0 +1,433 @@
+{
+  "status": 200,
+  "msg": "資料取得成功",
+  "data": [
+    {
+      "date": "2018/12/27 (三)",
+      "data": [
+        {
+          "id": "1",
+          "price": " 一 一 ",
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": 15561,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "3",
+          "price": 15562,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "4",
+          "price": 15568,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2018/12/27 (三)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2018/12/28 (四)",
+      "data": [
+        {
+          "id": "1",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "2",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "3",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": true,
+          "isAvailable": true
+        },
+        {
+          "id": "4",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2018/12/28 (四)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2018/12/29 (五)",
+      "data": [
+        {
+          "id": "1",
+          "price": "查看",
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": 12300,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "3",
+          "price": 15568,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "4",
+          "price": 15568,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2018/12/29 (五)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2018/12/30 (六)",
+      "data": [
+        {
+          "id": "1",
+          "price": "查看",
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": true,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": "查看",
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "3",
+          "price": 15568,
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "4",
+          "price": 12300,
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2018/12/30 (六)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2018/12/31 (日)",
+      "data": [
+        {
+          "id": "1",
+          "price": "查看",
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": "查看",
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "3",
+          "price": "查看",
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "4",
+          "price": 15568,
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 1999,
+          "date_tripStart": "2018/12/31 (日)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2019/01/01 (一)",
+      "data": [
+        {
+          "id": "1",
+          "price": "查看",
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": "查看",
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "3",
+          "price": "查看",
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "4",
+          "price": "查看",
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "5",
+          "price": 15568,
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2019/01/01 (一)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    {
+      "date": "2019/01/02 (二)",
+      "data": [
+        {
+          "id": "1",
+          "price": "查看",
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2018/12/30 (六)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "2",
+          "price": "查看",
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2018/12/31 (日)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "3",
+          "price": "查看",
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2019/01/01 (一)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "4",
+          "price": "查看",
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2019/01/02 (二)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "5",
+          "price": "查看",
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2019/01/03 (三)",
+          "isTheCheapest": false,
+          "isAvailable": false
+        },
+        {
+          "id": "6",
+          "price": 15568,
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2019/01/04 (四)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        },
+        {
+          "id": "7",
+          "price": 15568,
+          "date_tripStart": "2019/01/02 (二)",
+          "date_tripEnd": "2019/01/05 (五)",
+          "isTheCheapest": false,
+          "isAvailable": true
+        }
+      ]
+    }
+  ]
+}
