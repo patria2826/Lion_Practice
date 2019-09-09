@@ -77,7 +77,13 @@ table {
   height: 50px;
   width: 14.2857%;
   border-right: 1px solid #e1e2e4;
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
   border-bottom: 1px solid #e1e2e4;
+}
+.cellInfo:hover, .cellInfo.seleced {
+  background: #fff9e3;
+  border-color: #fe8b88;
 }
 
 /*# sourceMappingURL=table.css.map */

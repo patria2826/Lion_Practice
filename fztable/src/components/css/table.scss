@@ -3,6 +3,7 @@ $border_right: 1px solid #e1e2e4;
 $border_left: 1px solid #e1e2e4;
 $border_top: 1px solid #e1e2e4;
 $border_btm: 1px solid #e1e2e4;
+$border_cellInfo_hover: #fe8b88;
 $bg_left: #f1f1f1;
 $cellTitle_width: 88px;
 $cellInfo_width: 14.2857%;
@@ -41,7 +42,7 @@ table {
 .bg-left {
   background-color: $bg_left;
 }
-.title-padding{
+.title-padding {
   padding: 4px;
 }
 .title-top {
@@ -73,5 +74,12 @@ table {
   height: $cell_height;
   width: $cellInfo_width;
   border-right: $border_right;
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
   border-bottom: $border_btm;
+  &:hover,
+  &.seleced {
+    background: #fff9e3;
+    border-color: $border_cellInfo_hover;
+  }
 }

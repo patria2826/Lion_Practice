@@ -5,7 +5,6 @@ const Column = (props) => {
     let cellData = props.detailData ? props.detailData.map((ele, i) => {
         return <Cell key={i} detailData={ele} />;
     }) : '';
-    console.log(props)
     return (
         <div className="display-flex flex-center text-center">
             {cellData}
