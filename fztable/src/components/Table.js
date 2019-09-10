@@ -4,7 +4,7 @@ import './css/table.css';
 
 const Table = (props) => {
     let whichDay = props.tripData ? props.tripData['data'].map((ele, i) => {
-        return <div key={i} className="display-flex flex-center"><span>{ele['date'].substring(5, ele['date'].length)}</span></div>;
+        return <div key={i} className="display-flex flex-center flex-col">{ele['date'].substring(5, 10) === "01/01" ? <span className="newYear">{ele['date'].substring(0, 4)}</span> :''}<span>{ele['date'].substring(5, ele['date'].length)}</span></div>;
     }) : '';
     let columnData = props.tripData ? props.tripData['data'].map((ele, i) => {
         return <Column key={i} detailData={ele['data']} />;

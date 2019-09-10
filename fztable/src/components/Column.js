@@ -8,7 +8,6 @@ const Column = (props) => {
     return (
         <div className="display-flex flex-center text-center">
             {cellData}
-            {/* <Cell price={props.detailData['price']}/> */}
         </div>
     )
 }

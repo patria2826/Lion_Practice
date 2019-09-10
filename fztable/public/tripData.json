@@ -111,7 +111,7 @@
           "price": 15568,
           "date_tripStart": "2018/12/28 (四)",
           "date_tripEnd": "2019/01/04 (四)",
-          "isTheCheapest": false,
+          "isTheCheapest": true,
           "isAvailable": true
         },
         {

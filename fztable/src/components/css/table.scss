@@ -8,11 +8,14 @@ $bg_left: #f1f1f1;
 $cellTitle_width: 88px;
 $cellInfo_width: 14.2857%;
 $cell_height: 50px;
+$cheapest_color: #ff8e26;
 * {
   padding: 0;
   margin: 0;
 }
 body {
+  font-family: Verdana, Arial, \\5fae\8edf\6b63\9ed1\9ad4, Microsoft JhengHei, \\5fae\8edf\96c5\9ed1\9ad4,
+    Microsoft YaHei;
   line-height: 1.5;
   font-size: 14px;
 }
@@ -64,11 +67,20 @@ table {
   div div {
     width: 100%;
     height: $cell_height;
+    border-top: 1px solid transparent;
     border-bottom: $border_btm;
+    .newYear {
+      width: 70%;
+      text-align: right;
+    }
   }
   p {
     margin: 0;
   }
+}
+.newYear {
+  font-size: 12px;
+  color: #24a07c;
 }
 .cellInfo {
   height: $cell_height;
@@ -77,9 +89,34 @@ table {
   border-left: 1px solid transparent;
   border-top: 1px solid transparent;
   border-bottom: $border_btm;
+  position: relative;
+  color: #999;
   &:hover,
-  &.seleced {
+  &.selected {
     background: #fff9e3;
     border-color: $border_cellInfo_hover;
   }
+  .price {
+    margin-right: 5px;
+    color: #444;
+  }
+  .cheapestTriangle {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border-top: 10px solid $cheapest_color;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid $cheapest_color;
+  }
+  .cheapest {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    color: $cheapest_color;
+    font-size: 12px;
+  }
+}
+.crossed {
+  background-color: #f7f7f7;
 }
