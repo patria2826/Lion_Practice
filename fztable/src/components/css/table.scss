@@ -1,27 +1,26 @@
-$bg_top: #eaedf2;
-$border_right: 1px solid #e1e2e4;
-$border_left: 1px solid #e1e2e4;
-$border_top: 1px solid #e1e2e4;
-$border_btm: 1px solid #e1e2e4;
-$border_cellInfo_hover: #fe8b88;
-$bg_left: #f1f1f1;
-$cellTitle_width: 88px;
-$cellInfo_width: 14.2857%;
-$cell_height: 50px;
-$cheapest_color: #ff8e26;
+$bg-top: #eaedf2;
+$border-right: 1px solid #e1e2e4;
+$border-left: 1px solid #e1e2e4;
+$border-top: 1px solid #e1e2e4;
+$border-btm: 1px solid #e1e2e4;
+$border-cellInfo-hover: #fe8b88;
+$bg-left: #f1f1f1;
+$cellTitle-width: 88px;
+$cellInfo-width: 14.2857%;
+$cell-height: 50px;
+$cheapest-color: #ff8e26;
+$pc-media: 960px;
+$pcs-media: 959px;
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 body {
   font-family: Verdana, Arial, \\5fae\8edf\6b63\9ed1\9ad4, Microsoft JhengHei, \\5fae\8edf\96c5\9ed1\9ad4,
     Microsoft YaHei;
   line-height: 1.5;
   font-size: 14px;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
 }
 .display-flex {
   display: flex;
@@ -36,39 +35,40 @@ table {
 .text-right {
   text-align: right;
 }
-#root {
-  width: 890px;
+.pos-relative {
+  position: relative;
+}
+.width-inherit {
+  width: inherit;
 }
 .bg-top {
-  background-color: $bg_top;
+  background-color: $bg-top;
 }
 .bg-left {
-  background-color: $bg_left;
+  background-color: $bg-left;
 }
 .title-padding {
-  padding: 4px;
+  padding: 3px 4px;
 }
 .title-top {
-  height: $cell_height;
-  border-bottom: $border_btm;
+  height: $cell-height;
+  border-bottom: $border-btm;
   div {
     height: 100%;
-    div {
-      width: $cellInfo_width;
-      border-right: $border_right;
-    }
+    width: $cellInfo-width;
+    border-right: $border-right;
   }
 }
 .title-left {
-  width: $cellTitle_width;
-  border-right: $border_right;
-  border-left: $border_left;
-  border-top: $border_top;
+  width: $cellTitle-width;
+  border-right: $border-right;
+  border-left: $border-left;
+  border-top: $border-top;
   div div {
     width: 100%;
-    height: $cell_height;
+    height: $cell-height;
     border-top: 1px solid transparent;
-    border-bottom: $border_btm;
+    border-bottom: $border-btm;
     .newYear {
       width: 70%;
       text-align: right;
@@ -83,18 +83,18 @@ table {
   color: #24a07c;
 }
 .cellInfo {
-  height: $cell_height;
-  width: $cellInfo_width;
-  border-right: $border_right;
+  height: $cell-height;
+  width: $cellInfo-width;
+  border-right: $border-right;
   border-left: 1px solid transparent;
   border-top: 1px solid transparent;
-  border-bottom: $border_btm;
+  border-bottom: $border-btm;
   position: relative;
   color: #999;
   &:hover,
   &.selected {
     background: #fff9e3;
-    border-color: $border_cellInfo_hover;
+    border-color: $border-cellInfo-hover;
   }
   .price {
     margin-right: 5px;
@@ -104,19 +104,41 @@ table {
     position: absolute;
     top: -1px;
     left: -1px;
-    border-top: 10px solid $cheapest_color;
+    border-top: 10px solid $cheapest-color;
     border-right: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid $cheapest_color;
+    border-left: 10px solid $cheapest-color;
   }
   .cheapest {
     position: absolute;
     top: 0;
     left: 20px;
-    color: $cheapest_color;
+    color: $cheapest-color;
     font-size: 12px;
   }
 }
 .crossed {
   background-color: #f7f7f7;
+}
+
+@mixin pc-width() {
+  @media all and (min-width: $pc-media) {
+    @content;
+  }
+}
+@mixin mobile-width() {
+  @media all and (max-width: $pcs-media) {
+    @content;
+  }
+}
+
+#root {
+  @include pc-width {
+    width: 890px;
+    margin: auto;
+  }
+  @include mobile-width {
+    width: 100vw;
+    margin: auto;
+  }
 }

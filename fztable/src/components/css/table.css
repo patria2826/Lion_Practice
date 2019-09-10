@@ -2,17 +2,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Verdana, Arial, \\5fae軟正黑體, Microsoft JhengHei, \\5fae軟雅黑體, Microsoft YaHei;
   line-height: 1.5;
   font-size: 14px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
 }
 
 .display-flex {
@@ -32,8 +28,12 @@ table {
   text-align: right;
 }
 
-#root {
-  width: 890px;
+.pos-relative {
+  position: relative;
+}
+
+.width-inherit {
+  width: inherit;
 }
 
 .bg-top {
@@ -45,7 +45,7 @@ table {
 }
 
 .title-padding {
-  padding: 4px;
+  padding: 3px 4px;
 }
 
 .title-top {
@@ -54,8 +54,6 @@ table {
 }
 .title-top div {
   height: 100%;
-}
-.title-top div div {
   width: 14.2857%;
   border-right: 1px solid #e1e2e4;
 }
@@ -122,6 +120,19 @@ table {
 
 .crossed {
   background-color: #f7f7f7;
+}
+
+@media all and (min-width: 960px) {
+  #root {
+    width: 890px;
+    margin: auto;
+  }
+}
+@media all and (max-width: 959px) {
+  #root {
+    width: 100vw;
+    margin: auto;
+  }
 }
 
 /*# sourceMappingURL=table.css.map */

@@ -1,16 +1,9 @@
 import React from 'react';
-import Column from './Column';
 import './css/table.css';
 
-const Table = (props) => {
+const Table = function (props) {
     const [startDate, setStartDate] = React.useState('2018/12/30 (六)');
     const [endDate, setEndDate] = React.useState('2019/01/02 (二)');
-    const getStartDate = (date) => {
-        setStartDate(date);
-    }
-    const getEndDate = (date) => {
-        setEndDate(date);
-    }
     React.useEffect(() => {
         console.log(endDate)
     })
@@ -27,35 +20,32 @@ const Table = (props) => {
         </div>;
     }) : '';
     let columnData = props.tripData ? props.tripData['data'].map((ele, i) => {
-        return <Column key={i}
-            detailData={ele['data']}
-            colClassName={startDate === ele['date'] ? infoClassName + ' crossed' : infoClassName}
-            cellClassName={endDate === ele['date'] ? cellClassName + ' crossed' : cellClassName}
-            start={ele['date']}
-            returnStart={getStartDate}
-            returnEnd={getEndDate} />;
+        let row = Object.values(ele['data']);
+
+        return <div key={i} className={startDate === ele['date'] ? infoClassName + ' crossed' : infoClassName} onClick={() => { setStartDate(ele['date']) }}>
+            {row.map((element, index) => {
+                return <div key={index}
+                    className={endDate === element.date_tripEnd ? (startDate === element.date_tripStart ? cellClassName + ' crossed selected' : cellClassName + ' crossed') : cellClassName} onClick={() => { setEndDate(element.date_tripEnd) }}>{element.price}</div>
+            })}
+        </div>
     }) : '';
     return (
-        <div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="title-left bg-top">
-                            <div className="title-padding">
-                                <p className="text-right">回程</p>
-                                <p>去程</p>
-                            </div>
-                        </td>
-                        <td className="title-top bg-top"><div className="display-flex flex-center">{tripEnd}</div></td>
-                    </tr>
-                    <tr>
-                        <td className="title-left bg-left"><div className="display-flex flex-col flex-center">{tripStart}</div></td>
-                        <td>{columnData}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className="display-flex width-inherit">
+            <div className="pos-relative">
+                <div className="title-left bg-top">
+                    <div className="title-padding">
+                        <p className="text-right">回程</p>
+                        <p>去程</p>
+                    </div>
+                </div>
+                <div className="title-left bg-left"><div className="display-flex flex-col flex-center">{tripStart}</div></div>
+            </div>
+            <div className="width-inherit pos-relative">
+                <div className="display-flex flex-center title-top bg-top">{tripEnd}</div>
+                <div>{columnData}</div>
+            </div>
         </div>
     )
-}
+}.bind(document.querySelector('#root'));
 
 export default Table;

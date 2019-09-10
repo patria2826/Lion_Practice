@@ -21,9 +21,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Table tripData={this.state.data}/>
-            </div>
+            <Table tripData={this.state.data} />
         )
     }
 }
