@@ -139,7 +139,7 @@ body {
     margin: auto;
   }
   @include mobile-width {
-    width: 100vw;
+    width: 100%;
     margin: auto;
     overflow: hidden;
   }
@@ -175,5 +175,42 @@ body {
     @include mobile-width {
       width: 100% / 4 * $info-col-count;
     }
+  }
+}
+.right-arrow {
+  @include pc-width {
+    display: none;
+  }
+  @include mobile-width {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: rgba(171, 171, 171, 0.5);
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+.left-arrow {
+  @include pc-width {
+    display: none;
+  }
+  @include mobile-width {
+    position: absolute;
+    left: 88px;
+    top: 50%;
+    background: rgba(171, 171, 171, 0.5);
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
   }
 }

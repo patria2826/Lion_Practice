@@ -130,7 +130,7 @@ body {
 }
 @media all and (max-width: 959px) {
   #root {
-    width: 100vw;
+    width: 100%;
     margin: auto;
     overflow: hidden;
   }
@@ -161,6 +161,48 @@ body {
   .show4 .title-top,
 .show4 .infoSection {
     width: 175%;
+  }
+}
+
+@media all and (min-width: 960px) {
+  .right-arrow {
+    display: none;
+  }
+}
+@media all and (max-width: 959px) {
+  .right-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: rgba(171, 171, 171, 0.5);
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media all and (min-width: 960px) {
+  .left-arrow {
+    display: none;
+  }
+}
+@media all and (max-width: 959px) {
+  .left-arrow {
+    position: absolute;
+    left: 88px;
+    top: 50%;
+    background: rgba(171, 171, 171, 0.5);
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
   }
 }
 

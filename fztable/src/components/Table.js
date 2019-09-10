@@ -30,7 +30,9 @@ const Table = function (props) {
         </div>
     }) : '';
     return (
-        <div className="display-flex width-inherit">
+        <div className="display-flex width-inherit pos-relative">
+            <div className="right-arrow">></div>
+            <div className="left-arrow">{'<'}</div>
             <div className="pos-relative">
                 <div className="title-left bg-top">
                     <div className="title-padding">
