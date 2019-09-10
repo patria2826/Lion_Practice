@@ -9,6 +9,7 @@ $cellTitle-width: 88px;
 $cellInfo-width: 14.2857%;
 $cell-height: 50px;
 $cheapest-color: #ff8e26;
+$info-col-count: 7;
 $pc-media: 960px;
 $pcs-media: 959px;
 * {
@@ -148,7 +149,7 @@ body {
   .title-top,
   .infoSection {
     @include mobile-width {
-      width: 700%;
+      width: 100% / 1 * $info-col-count;
     }
   }
 }
@@ -156,7 +157,7 @@ body {
   .title-top,
   .infoSection {
     @include mobile-width {
-      width: 350%;
+      width: 100% / 2 * $info-col-count;
     }
   }
 }
@@ -164,7 +165,7 @@ body {
   .title-top,
   .infoSection {
     @include mobile-width {
-      width: 233.5%;
+      width: 100% / 3 * $info-col-count;
     }
   }
 }
@@ -172,7 +173,7 @@ body {
   .title-top,
   .infoSection {
     @include mobile-width {
-      width: 175%;
+      width: 100% / 4 * $info-col-count;
     }
   }
 }
