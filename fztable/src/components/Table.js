@@ -20,7 +20,7 @@ const Table = function (props) {
         </div>;
     }) : '';
     let columnData = props.tripData ? props.tripData['data'].map((ele, i) => {
-        let row = Object.values(ele['data']);
+        let row = Object.values(ele['data']); //obj to arr
 
         return <div key={i} className={startDate === ele['date'] ? infoClassName + ' crossed' : infoClassName} onClick={() => { setStartDate(ele['date']) }}>
             {row.map((element, index) => {
@@ -40,12 +40,12 @@ const Table = function (props) {
                 </div>
                 <div className="title-left bg-left"><div className="display-flex flex-col flex-center">{tripStart}</div></div>
             </div>
-            <div className="width-inherit pos-relative">
+            <div className={`width-inherit pos-relative show` + props.count.show}>
                 <div className="display-flex flex-center title-top bg-top">{tripEnd}</div>
-                <div>{columnData}</div>
+                <div className="infoSection">{columnData}</div>
             </div>
         </div>
     )
-}.bind(document.querySelector('#root'));
+}
 
 export default Table;

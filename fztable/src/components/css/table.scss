@@ -140,5 +140,39 @@ body {
   @include mobile-width {
     width: 100vw;
     margin: auto;
+    overflow: hidden;
+  }
+}
+
+.show1 {
+  .title-top,
+  .infoSection {
+    @include mobile-width {
+      width: 700%;
+    }
+  }
+}
+.show2 {
+  .title-top,
+  .infoSection {
+    @include mobile-width {
+      width: 350%;
+    }
+  }
+}
+.show3 {
+  .title-top,
+  .infoSection {
+    @include mobile-width {
+      width: 233.5%;
+    }
+  }
+}
+.show4 {
+  .title-top,
+  .infoSection {
+    @include mobile-width {
+      width: 175%;
+    }
   }
 }

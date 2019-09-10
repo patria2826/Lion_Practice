@@ -132,6 +132,35 @@ body {
   #root {
     width: 100vw;
     margin: auto;
+    overflow: hidden;
+  }
+}
+
+@media all and (max-width: 959px) {
+  .show1 .title-top,
+.show1 .infoSection {
+    width: 700%;
+  }
+}
+
+@media all and (max-width: 959px) {
+  .show2 .title-top,
+.show2 .infoSection {
+    width: 350%;
+  }
+}
+
+@media all and (max-width: 959px) {
+  .show3 .title-top,
+.show3 .infoSection {
+    width: 233.5%;
+  }
+}
+
+@media all and (max-width: 959px) {
+  .show4 .title-top,
+.show4 .infoSection {
+    width: 175%;
   }
 }
 
