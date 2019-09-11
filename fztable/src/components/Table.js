@@ -13,6 +13,7 @@ const Table = function (props) {
     const { tripData, count, speed, whenClick } = props;
     let colCount = 7;
     let titleClassName = 'display-flex flex-center flex-col';
+    let titleTopClassName = titleClassName + ' top-cell';
     let infoClassName = 'display-flex flex-center';
     let cellClassName = 'cellInfo display-flex flex-center';
 
@@ -24,7 +25,7 @@ const Table = function (props) {
         </div>;
     }) : '';
     let tripEnd = tripData ? tripData['data'].map((ele, i) => {
-        return <div key={i} className={titleClassName}>{ele['data'][i]['date_tripEnd'].substring(5, 10) === "01/01" ?
+        return <div key={i} className={titleTopClassName}>{ele['data'][i]['date_tripEnd'].substring(5, 10) === "01/01" ?
             <span className="newYear">{ele['data'][i]['date_tripEnd'].substring(0, 4)}</span> : ''}
             <span>{ele['data'][i]['date_tripEnd'].substring(5, ele['data'][i]['date_tripEnd'].length)}</span>
         </div>;
@@ -38,7 +39,8 @@ const Table = function (props) {
                     className={endDate === element.date_tripEnd ? (startDate === element.date_tripStart ? cellClassName + ' crossed selected' : cellClassName + ' crossed') : cellClassName}
                     onClick={(e) => { setEndDate(element.date_tripEnd); whenClick(e) }}>
                     {element.isTheCheapest && typeof element.price === 'number' ? <div><div className="cheapestTriangle"></div><div className="cheapest">最便宜</div></div> : ''}
-                    {element.price}
+                    <span className="price">{typeof element.price === 'number' ? '$' + element.price.toLocaleString() : element.price}</span>
+                    {typeof element.price === 'number' ? '起' : ''}
                 </div>
             })}
         </div>
@@ -70,7 +72,7 @@ const Table = function (props) {
                         setLeftArrowClassName('left-arrow');
                     }
                 }}>></div>
-            <div className="pos-relative table-left">
+            <div className="table-left">
                 <div className="title-left bg-top">
                     <div className="title-padding">
                         <p className="text-right">回程</p>
@@ -79,12 +81,10 @@ const Table = function (props) {
                 </div>
                 <div className="title-left bg-left"><div className="display-flex flex-col flex-center">{tripStart}</div></div>
             </div>
-            <div className={"width-inherit pos-relative"}>
-                <div className={"show-" + count.show}>
-                    <div className={"scrolled-" + scrolled} style={{ 'transition': speed + 's' }}>
-                        <div className="display-flex flex-center title-top bg-top">{tripEnd}</div>
-                        <div className="infoSection">{columnData}</div>
-                    </div>
+            <div className={"table-right show-" + count.show}>
+                <div className={"scrolled-" + scrolled} style={{ 'transition': speed + 's' }}>
+                    <div className="display-flex flex-center title-top bg-top">{tripEnd}</div>
+                    <div className="infoSection">{columnData}</div>
                 </div>
             </div>
         </div>

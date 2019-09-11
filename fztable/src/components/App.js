@@ -24,7 +24,7 @@ class App extends Component {
             <Table tripData={this.state.data}
                 count={{ slide: 10, show: 3 }}
                 speed={0.3}
-                whenClick={(element) => { alert(element.target.innerHTML) }} 
+                whenClick={(element) => { console.log(element.target.innerHTML) }} 
                 />
         )
     }

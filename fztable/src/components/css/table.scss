@@ -2,13 +2,26 @@ $bg-top: #eaedf2;
 $info-border: 1px solid #e1e2e4;
 $border-cellInfo-hover: #fe8b88;
 $bg-left: #f1f1f1;
+$title_color: #666;
 $cellTitle-width: 88px;
 $info-col-count: 7;
 $cellInfo-width: 100% / $info-col-count;
 $cell-height: 50px;
 $cheapest-color: #ff8e26;
-$pc-media: 960px;
-$pcs-media: 959px;
+$pc-media: 769px;
+$pcs-media: 768px;
+
+@mixin pc-width() {
+  @media all and (min-width: $pc-media) {
+    @content;
+  }
+}
+@mixin mobile-width() {
+  @media all and (max-width: $pcs-media) {
+    @content;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -19,6 +32,7 @@ body {
     Microsoft YaHei;
   line-height: 1.5;
   font-size: 14px;
+  white-space: nowrap;
 }
 .display-none {
   display: none;
@@ -54,6 +68,7 @@ body {
 .title-top {
   height: $cell-height;
   border-bottom: $info-border;
+  color: $title_color;
   div {
     height: 100%;
     width: $cellInfo-width;
@@ -62,6 +77,7 @@ body {
 }
 .table-left {
   z-index: 1;
+  color: $title_color;
   .title-left {
     width: $cellTitle-width;
     border-right: $info-border;
@@ -74,14 +90,26 @@ body {
       border-bottom: $info-border;
       .newYear {
         width: 70%;
-        text-align: right;
       }
     }
   }
 }
+.table-right {
+  @include pc-width {
+    width: inherit;
+  }
+  @include mobile-width {
+    width: calc(100% - 88px);
+  }
+}
 .newYear {
+  width: 65%;
+  text-align: right;
   font-size: 12px;
   color: #24a07c;
+  @include mobile-width {
+    width: 40%;
+  }
 }
 .cellInfo {
   height: $cell-height;
@@ -92,6 +120,7 @@ body {
   border-bottom: $info-border;
   position: relative;
   color: #999;
+  cursor: pointer;
   &:hover,
   &.selected {
     background: #fff9e3;
@@ -122,24 +151,15 @@ body {
   background-color: #f7f7f7;
 }
 
-@mixin pc-width() {
-  @media all and (min-width: $pc-media) {
-    @content;
-  }
-}
-@mixin mobile-width() {
-  @media all and (max-width: $pcs-media) {
-    @content;
-  }
-}
-
 #root {
+  > div {
+    width: 100%;
+  }
   @include pc-width {
-    width: 890px;
+    max-width: 890px;
     margin: auto;
   }
   @include mobile-width {
-    width: 100%;
     margin: auto;
     overflow: hidden;
   }
@@ -148,13 +168,16 @@ body {
 @for $i from 1 through 6 {
   .show-#{$i} {
     @include mobile-width {
-      z-index: -1;
       @for $j from 0 through 6 {
         .scrolled-#{$j} {
           transform: translateX(-100% / $i * $j);
           .title-top,
           .infoSection {
-            width: 100% / $i * $info-col-count;
+            width: percentage($info-col-count/$i);
+            .cellInfo,
+            .top-cell {
+              width: 100% / $i;
+            }
           }
         }
       }
@@ -171,7 +194,8 @@ body {
     top: 50%;
     background: rgba(171, 171, 171, 0.5);
     width: 20px;
-    height: 30px;
+    height: 41px;
+    padding: 6px 3px;
     line-height: 30px;
     text-align: center;
     color: #fff;
