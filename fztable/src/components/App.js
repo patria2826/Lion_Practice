@@ -22,9 +22,10 @@ class App extends Component {
     render() {
         return (
             <Table tripData={this.state.data}
-                count={{ slide: 1, show: 3 }}
+                count={{ slide: 5, show: 3 }}
                 speed={0.3}
-                whenClick={(element) => { console.log(element) }} />
+                whenClick={(element) => { alert(element.target.innerHTML) }} 
+                />
         )
     }
 }
