@@ -11,6 +11,7 @@ const Table = function (props) {
     const [leftArrowClassName, setLeftArrowClassName] = useState('left-arrow display-none');
     const [rightArrowClassName, setRigthArrowClassName] = useState('right-arrow');
     const { tripData, count, speed, whenClick } = props;
+    let colCount = 7;
     let titleClassName = 'display-flex flex-center flex-col';
     let infoClassName = 'display-flex flex-center';
     let cellClassName = 'cellInfo display-flex flex-center';
@@ -45,17 +46,17 @@ const Table = function (props) {
 
     // Life cycle
     React.useEffect(() => {
-        if (count.show + scrolled >= 7) {
+        if (count.show + scrolled >= colCount) {
             setScrolled(7 - count.show);
         }
         if (!scrolled) {
             setLeftArrowClassName('left-arrow display-none');
             setRigthArrowClassName('right-arrow');
         } else {
-            if (scrolled + count.show >= 7) setRigthArrowClassName('right-arrow display-none');
+            if (scrolled + count.show >= colCount) setRigthArrowClassName('right-arrow display-none');
             else setRigthArrowClassName('right-arrow');
         }
-    }, [scrolled, count.show])
+    }, [scrolled, count.show, colCount])
 
     // Render
     return (
@@ -64,7 +65,7 @@ const Table = function (props) {
                 onClick={scrolled ? () => setScrolled(scrolled - count.slide < 0 ? 0 : scrolled - count.slide) : () => { setRigthArrowClassName('right-arrow') }}>{'<'}</div>
             <div className={rightArrowClassName}
                 onClick={() => {
-                    if (scrolled * count.show < 7) {
+                    if (scrolled + count.show <= colCount) {
                         setScrolled(scrolled + count.slide);
                         setLeftArrowClassName('left-arrow');
                     }
