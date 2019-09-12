@@ -3,8 +3,8 @@ import './css/table.css';
 
 const Table = function (props) {
     // Set state and variants
-    const [startDate, setStartDate] = React.useState('2018/12/30 (六)');
-    const [endDate, setEndDate] = React.useState('2019/01/02 (二)');
+    const [startDate, setStartDate] = useState('2018/12/30 (六)');
+    const [endDate, setEndDate] = useState('2019/01/02 (二)');
     // const [startDate, setStartDate] = useState(0);
     // const [endDate, setEndDate] = useState(0);
     const [scrolled, setScrolled] = useState(0);
