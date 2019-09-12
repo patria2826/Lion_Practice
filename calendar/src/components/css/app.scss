@@ -1,0 +1,82 @@
+$font-family: Verdana, Arial, "\5FAE\8EDF\6B63\9ED1\9AD4", "Microsoft JhengHei", "\5FAE\8EDF\96C5\9ED1\9AD4",
+  "Microsoft YaHei";
+* {
+  padding: 0;
+  margin: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  font-family: $font-family;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.display-flex {
+  display: flex;
+}
+
+#root {
+  width: 950px;
+  margin: auto;
+}
+.calender {
+  width: 50%;
+  flex-direction: column;
+  padding: 0 5px;
+  overflow: hidden;
+  .calendar-top {
+    background-color: #ede9dd;
+    .arrow {
+      width: 20px;
+      height: 50px;
+      position: relative;
+      // display: block;
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        margin: auto;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        display: inline-block;
+        border-style: solid;
+        border-width: 7px 7px 7px 0;
+        border-color: transparent #e10500 transparent transparent;
+      }
+      &.arrow-right {
+        &:before {
+          transform: scaleX(-1);
+        }
+      }
+    }
+    .month-list {
+      width: calc(100% - 40px);
+      margin: auto;
+      justify-content: space-around;
+      li {
+        width: calc(100% / 3);
+        text-align: center;
+        a {
+          display: block;
+          height: 50px;
+          line-height: 50px;
+          text-decoration: none;
+          color: #666;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .weekdays {
+    justify-content: space-around;
+    font-weight: 600;
+    color: #666;
+    line-height: 30px;
+    text-align: center;
+  }
+}
