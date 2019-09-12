@@ -29,12 +29,14 @@ const Calendar = (props) => {
     }
     const response = getData();
 
-
+    // Life cycle
     useEffect(() => {
         if (response.data) { setCompleteData(response.data) }
     }, [response.data]);
     useEffect(() => {
-        if (completeData) { allMonths.current = Array.from(new Set(completeData.map((data) => { return data['date'].substring(0, 7) }))).sort(); }
+        if (completeData) { 
+            allMonths.current = Array.from(new Set(completeData.map((data) => { return data['date'].substring(0, 7) }))).sort();
+         }
     })
 
     return (
