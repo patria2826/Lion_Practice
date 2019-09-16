@@ -26,10 +26,19 @@ const Calendar = (props) => {
             {ele === 'blank' ? '' :
                 <div className="info">
                     <span className="date">{ele.substring(8, 10)}</span>
-                    <span>{completeData.filter((product) => { return product['date'] === ele }).length > 1 ? '2' : '1'}</span>
-                    {/* <span>{completeData.filter((product) => { product['date'] === ele }) > 1 ? 'ss' : 'vv'}</span> */}
+                    {(() => {
+                        let count = completeData.filter((product) => { return product['date'] === ele && product['guaranteed'] }).length;
+                        if (count) {
+                            if (count > 1) {
+                                return <span>More</span>;
+                            } else {
+                                return <span className="guaranteed">成團</span>;
+                            }
+                        } else if (!count) {
+                            return;
+                        }
+                    })()}
                 </div>
-                // completeData.map((ele, i) => { return Object.values(ele)[1].substring(0, 7) === allMonths.current[monthsSelected] ? Object.values(ele) : '' })
             }
         </div>
     })
@@ -73,7 +82,7 @@ const Calendar = (props) => {
     useEffect(() => {
         if (completeData) {
             allMonths.current = Array.from(new Set(completeData.map((data) => { return data['date'].substring(0, 7) }))).sort();
-            console.log(completeData)
+            // console.log(completeData)
         }
     })
     useEffect(() => {
