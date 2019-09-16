@@ -24,7 +24,11 @@ const Calendar = (props) => {
     let productsThisMonth = daysArray.map((ele, i) => {
         return <div key={i} className={ele === 'blank' ? ele + ' days' : 'days'}>
             {ele === 'blank' ? '' :
-                <span className="date">{ele}</span>
+                <div className="info">
+                    <span className="date">{ele.substring(8, 10)}</span>
+                    <span>{completeData.filter((product) => { return product['date'] === ele })['date']}</span>
+                    {/* <span>{completeData.filter((product) => { product['date'] === ele }) > 1 ? 'ss' : 'vv'}</span> */}
+                </div>
                 // completeData.map((ele, i) => { return Object.values(ele)[1].substring(0, 7) === allMonths.current[monthsSelected] ? Object.values(ele) : '' })
             }
         </div>
@@ -96,7 +100,7 @@ const Calendar = (props) => {
                 daysarray.push('blank')
             }
             for (let i = 1; i <= daysInMonth; i++) {
-                daysarray.push(i)
+                daysarray.push(selectedYear + '/' + selectedMonth + '/' + i)
             }
             while (daysarray.length < 42) {
                 daysarray.push('blank')
