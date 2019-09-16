@@ -53,6 +53,7 @@ const App = () => {
             </div> */}
             <Calendar
                 dataSource={'./data1.json'}
+                // initYearMonth={'201611'}
                 initYearMonth={'201705'}
                 dataKeySetting={{
                     'guaranteed': 'guaranteed',

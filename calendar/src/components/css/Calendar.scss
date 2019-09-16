@@ -1,8 +1,11 @@
 $font-family: Verdana, Arial, "\5FAE\8EDF\6B63\9ED1\9AD4", "Microsoft JhengHei", "\5FAE\8EDF\96C5\9ED1\9AD4",
   "Microsoft YaHei";
+$month-list-bg: #ede9dd;
+$block-border: #f4f4f4 1px solid;
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 ul,
 li {
@@ -11,7 +14,6 @@ li {
 body {
   font-family: $font-family;
   font-size: 14px;
-  box-sizing: border-box;
 }
 .display-flex {
   display: flex;
@@ -27,7 +29,7 @@ body {
   padding: 0 5px;
   overflow: hidden;
   .calendar-top {
-    background-color: #ede9dd;
+    background-color: $month-list-bg;
     .arrow {
       width: 20px;
       height: 50px;
@@ -64,10 +66,14 @@ body {
         a {
           display: block;
           height: 50px;
-          line-height: 50px;
+          border-top: 3px solid $month-list-bg;
+          line-height: 47px;
           text-decoration: none;
           color: #666;
           font-size: 16px;
+          &.selected {
+            background-color: #fff;
+          }
         }
       }
     }
@@ -78,5 +84,26 @@ body {
     color: #666;
     line-height: 30px;
     text-align: center;
+    .weekday {
+      width: calc(100% / 7);
+      border: $block-border;
+    }
+  }
+  .month-days {
+    display: flex;
+    flex-wrap: wrap;
+    .days {
+      width: calc(100% / 7);
+      height: 85px;
+      border: $block-border;
+      font-size: 12px;
+      overflow: hidden;
+      &.blank {
+        background-color: #f8f8f8;
+        border: 1px solid transparent;
+      }
+      .date {
+      }
+    }
   }
 }
