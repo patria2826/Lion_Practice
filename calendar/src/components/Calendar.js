@@ -26,7 +26,7 @@ const Calendar = (props) => {
             {ele === 'blank' ? '' :
                 <div className="info">
                     <span className="date">{ele.substring(8, 10)}</span>
-                    <span>{completeData.filter((product) => { return product['date'] === ele })['date']}</span>
+                    <span>{completeData.filter((product) => { return product['date'] === ele }).length > 1 ? '2' : '1'}</span>
                     {/* <span>{completeData.filter((product) => { product['date'] === ele }) > 1 ? 'ss' : 'vv'}</span> */}
                 </div>
                 // completeData.map((ele, i) => { return Object.values(ele)[1].substring(0, 7) === allMonths.current[monthsSelected] ? Object.values(ele) : '' })
