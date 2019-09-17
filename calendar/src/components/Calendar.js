@@ -115,13 +115,13 @@ const Calendar = (props) => {
         if (originallySelectedMonth > clickedMonthIndex) {
             onClickPrev(e['target'],
                 completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data }
+                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } else return []
                 })
             );
         } else if (originallySelectedMonth < clickedMonthIndex) {
             onClickNext(e['target'],
                 completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data }
+                    if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } else return []
                 })
             );
         }
@@ -133,7 +133,7 @@ const Calendar = (props) => {
         if (monthsSelected >= 1) {
             onClickPrev(e['target'],
                 completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data }
+                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } else return []
                 })
             );
             setMonthsSelected(monthsSelected - 1);
@@ -144,7 +144,7 @@ const Calendar = (props) => {
         const originallySelectedMonth = monthsSelected;
         onClickNext(e['target'],
             completeData.filter((data) => {
-                if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data }
+                if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } else return []
             })
         )
         if (monthsSelected < allMonths.current.length - 1) {
@@ -160,8 +160,8 @@ const Calendar = (props) => {
     // set up one array storing years and months, another for years and months from data
     useEffect(() => {
         if (completeData) {
-            allMonths.current = new Array();
-            monthsInData.current = new Array();
+            allMonths.current = [];
+            monthsInData.current = [];
             for (let i = 0; i < 50; i++) {
                 const yyyymm = new Date('2016/01/01')
                 let yyyy, mm;
@@ -196,7 +196,7 @@ const Calendar = (props) => {
             const selectedMonth = allMonths.current[monthsSelected].substring(5, 7);
             const firstDay = new Date(selectedYear, selectedMonth - 1, 1).getDay();
             const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate();
-            let daysarray = new Array();
+            const daysarray = [];
 
             for (let i = 0; i < firstDay; i++) {
                 daysarray.push('blank')
@@ -223,7 +223,7 @@ const Calendar = (props) => {
                             <span><i className="far fa-calendar-alt"></i> 切換月曆顯示</span>}
                     </div>
                     <div className="calendar-top display-flex">
-                        <a className="arrow" href="/#" onClick={prevMonth}></a>
+                        <a className="arrow" href="/#" onClick={prevMonth}>{}</a>
                         <ul className="month-list display-flex">
                             {allMonths.current
                                 // set three months for showing
@@ -240,7 +240,7 @@ const Calendar = (props) => {
                                     </li>
                                 })}
                         </ul>
-                        <a className="arrow arrow-right" href="/#" onClick={nextMonth}></a>
+                        <a className="arrow arrow-right" href="/#" onClick={nextMonth}>{}</a>
                     </div>
                     <div className={mode}>
                         {mode === 'listMode' && monthsInData.current.indexOf(allMonths.current[monthsSelected]) === -1 ?
