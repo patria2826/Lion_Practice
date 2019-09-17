@@ -2,29 +2,28 @@ import React from 'react';
 import Calendar from './Calendar';
 
 const App = () => {
-
     return (
         <div>
             <Calendar
-                dataSource={'./data3.json'}
+                dataSource={'./data2.json'}
                 // initYearMonth={'201611'}
                 initYearMonth={'201705'}
                 dataKeySetting={{
-                    'guaranteed': 'guaranteed',
+                    'guaranteed': 'certain',
                     // 狀態
-                    'status': 'status',
+                    'status': 'state',
                     // 可賣團位
-                    'available': 'availableVancancy',
+                    'available': 'onsell',
                     // 團位
-                    'total': 'totalVacnacy',
+                    'total': 'total',
                     // 價格
                     'price': 'price'
                 }}
-                onClickPrev={function ($btn, data, module) {
-                    console.log($btn, data, module);
+                onClickPrev={function ($btn, data) {
+                    console.log($btn, data);
                 }}
-                onClickNext={function ($btn, data, module) {
-                    console.log($btn, data, module);
+                onClickNext={function ($btn, data) {
+                    console.log($btn, data);
                 }}
                 onClickDate={function ($date, data) {
                     console.log($date, data);
