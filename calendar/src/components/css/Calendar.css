@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.display-flex {
+  display: flex;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -15,17 +19,13 @@ body {
   font-size: 14px;
 }
 
-.display-flex {
-  display: flex;
-}
-
 #root {
-  width: 1156px;
+  width: 578px;
   margin: auto;
 }
 
 .calender {
-  width: 50%;
+  width: 100%;
   flex-direction: column;
   padding: 0 5px;
   overflow: hidden;
@@ -69,11 +69,12 @@ body {
 }
 .calender .calendar-top .month-list li {
   width: calc(100% / 3);
+  position: relative;
   text-align: center;
 }
 .calender .calendar-top .month-list li a {
-  display: block;
   height: 50px;
+  display: block;
   border-top: 3px solid #ede9dd;
   line-height: 47px;
   text-decoration: none;
@@ -82,6 +83,13 @@ body {
 }
 .calender .calendar-top .month-list li a.selected {
   background-color: #fff;
+}
+.calender .calendar-top .month-list li .no-data {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 13px;
+  color: #1c9c9d;
 }
 .calender .dayMode .weekdays {
   justify-content: space-around;
@@ -99,31 +107,23 @@ body {
 }
 .calender .dayMode .month-days {
   flex-wrap: wrap;
-  border-right: #f4f4f4 1px solid;
-  border-bottom: #f4f4f4 1px solid;
 }
 .calender .dayMode .month-days .days {
   width: calc(100% / 7);
   height: 85px;
   border-left: #f4f4f4 1px solid;
   border-bottom: #f4f4f4 1px solid;
-  font-size: 12px;
   overflow: hidden;
-}
-.calender .dayMode .month-days .days:hover {
-  background-color: #fff9e3;
 }
 .calender .dayMode .month-days .days.blank {
   background-color: #f8f8f8;
   border: 1px solid transparent;
 }
 .calender .dayMode .month-days .days.selected {
-  background-color: #fff9e3;
   border: #66bb3c 2px solid;
 }
 .calender .dayMode .month-days .days .days-this-month {
   position: relative;
-  cursor: pointer;
 }
 .calender .dayMode .month-days .days .days-this-month .datum .date {
   position: absolute;
@@ -135,6 +135,32 @@ body {
   width: 100%;
   position: absolute;
   top: 36px;
+}
+.calender .dayMode .month-days .days .days-this-month .info {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.calender .dayMode .month-days .days .days-this-month .info .guaranteed {
+  width: 50%;
+  height: 20px;
+  align-self: flex-end;
+  line-height: 20px;
+}
+.calender .dayMode .month-days {
+  border-right: #f4f4f4 1px solid;
+  border-bottom: #f4f4f4 1px solid;
+}
+.calender .dayMode .month-days .days {
+  font-size: 12px;
+}
+.calender .dayMode .month-days .days.selected, .calender .dayMode .month-days .days:hover {
+  background-color: #fff9e3;
+}
+.calender .dayMode .month-days .days .days-this-month {
+  cursor: pointer;
+}
+.calender .dayMode .month-days .days .days-this-month .more {
   color: #444;
 }
 .calender .dayMode .month-days .days .days-this-month .more:after {
@@ -154,35 +180,26 @@ body {
 .calender .dayMode .month-days .days .days-this-month .more .price {
   color: #e10500;
 }
-.calender .dayMode .month-days .days .days-this-month .info {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-}
 .calender .dayMode .month-days .days .days-this-month .info .guaranteed {
-  width: 50%;
-  height: 20px;
-  align-self: flex-end;
   color: #fff;
   text-align: center;
-  line-height: 20px;
 }
 .calender .dayMode .month-days .days .days-this-month .info .guaranteed.guaranteed-y {
   background-color: #fe8400;
 }
-.calender .dayMode .month-days .days .days-this-month .info .available,
-.calender .dayMode .month-days .days .days-this-month .info .total {
+.calender .dayMode .month-days .days .days-this-month .info .status .available,
+.calender .dayMode .month-days .days .days-this-month .info .status .total {
   color: #666;
 }
-.calender .dayMode .month-days .days .days-this-month .info .sign-up,
-.calender .dayMode .month-days .days .days-this-month .info .pre-order {
+.calender .dayMode .month-days .days .days-this-month .info .status .sign-up,
+.calender .dayMode .month-days .days .days-this-month .info .status .pre-order {
   color: #ff7800;
 }
-.calender .dayMode .month-days .days .days-this-month .info .waiting {
+.calender .dayMode .month-days .days .days-this-month .info .status.waiting {
   color: #1c9c9d;
 }
-.calender .dayMode .month-days .days .days-this-month .info .close,
-.calender .dayMode .month-days .days .days-this-month .info .full {
+.calender .dayMode .month-days .days .days-this-month .info .status .close,
+.calender .dayMode .month-days .days .days-this-month .info .status .full {
   color: #999;
 }
 .calender .dayMode .month-days .days .days-this-month .info .price {
@@ -219,7 +236,6 @@ body {
 }
 .listMode .month-days .days .days-this-month {
   display: flex;
-  cursor: pointer;
 }
 .listMode .month-days .days .days-this-month .datum {
   margin-right: 5px;
@@ -240,8 +256,56 @@ body {
   position: relative;
   display: flex;
   flex-flow: column;
-  color: #444;
   white-space: nowrap;
+}
+.listMode .month-days .days .days-this-month .info {
+  width: 100%;
+  position: relative;
+}
+.listMode .month-days .days .days-this-month .info span {
+  position: absolute;
+}
+.listMode .month-days .days .days-this-month .info .guaranteed {
+  left: 0;
+  bottom: 0;
+  padding: 0 5px;
+  line-height: 1.5;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.listMode .month-days .days .days-this-month .info .available,
+.listMode .month-days .days .days-this-month .info .total {
+  font-size: 14px;
+}
+.listMode .month-days .days .days-this-month .info .total {
+  left: 70px;
+}
+.listMode .month-days .days .days-this-month .info .status {
+  top: 0;
+  right: 0;
+  font-size: 16px;
+}
+.listMode .month-days .days .days-this-month .info .price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 16px;
+}
+.listMode .month-days {
+  border-right: #f4f4f4 1px solid;
+  border-bottom: #f4f4f4 1px solid;
+}
+.listMode .month-days .days {
+  font-size: 12px;
+}
+.listMode .month-days .days.selected, .listMode .month-days .days:hover {
+  background-color: #fff9e3;
+}
+.listMode .month-days .days .days-this-month {
+  cursor: pointer;
+}
+.listMode .month-days .days .days-this-month .more {
+  color: #444;
 }
 .listMode .month-days .days .days-this-month .more:after {
   content: "";
@@ -260,61 +324,33 @@ body {
 .listMode .month-days .days .days-this-month .more .price {
   color: #e10500;
 }
-.listMode .month-days .days .days-this-month .info {
-  width: 100%;
-  position: relative;
-  justify-content: space-between;
-}
-.listMode .month-days .days .days-this-month .info span {
-  position: absolute;
-}
 .listMode .month-days .days .days-this-month .info .guaranteed {
-  left: 0;
-  bottom: 0;
-  padding: 0 5px;
-  line-height: 1.5;
-  border-radius: 3px;
-  font-size: 14px;
   color: #fff;
   text-align: center;
 }
 .listMode .month-days .days .days-this-month .info .guaranteed.guaranteed-y {
   background-color: #fe8400;
 }
-.listMode .month-days .days .days-this-month .info .available,
-.listMode .month-days .days .days-this-month .info .total {
+.listMode .month-days .days .days-this-month .info .status .available,
+.listMode .month-days .days .days-this-month .info .status .total {
   color: #666;
-  font-size: 14px;
 }
-.listMode .month-days .days .days-this-month .info .total {
-  left: 70px;
-}
-.listMode .month-days .days .days-this-month .info .status {
-  top: 0;
-  right: 0;
-  font-size: 16px;
-}
-.listMode .month-days .days .days-this-month .info .status.sign-up {
-  color: #ff7800;
-}
-.listMode .month-days .days .days-this-month .info .status.pre-order {
+.listMode .month-days .days .days-this-month .info .status .sign-up,
+.listMode .month-days .days .days-this-month .info .status .pre-order {
   color: #ff7800;
 }
 .listMode .month-days .days .days-this-month .info .status.waiting {
   color: #1c9c9d;
 }
-.listMode .month-days .days .days-this-month .info .status.close {
-  color: #999;
-}
-.listMode .month-days .days .days-this-month .info .status.full {
+.listMode .month-days .days .days-this-month .info .status .close,
+.listMode .month-days .days .days-this-month .info .status .full {
   color: #999;
 }
 .listMode .month-days .days .days-this-month .info .price {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-size: 16px;
   color: #e10500;
+}
+.listMode .no-data {
+  text-align: center;
 }
 
 /*# sourceMappingURL=Calendar.css.map */

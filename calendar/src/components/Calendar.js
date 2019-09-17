@@ -22,6 +22,7 @@ const Calendar = (props) => {
         '星期六',
     ];
     let allMonths = useRef();
+    let monthsInData = useRef();
 
     // component for showing
     let productsThisMonth = daysArray.map((ele, i) => {
@@ -49,11 +50,14 @@ const Calendar = (props) => {
                                 }
                                 return <span className="more">
                                     <span className="text">看更多團</span>
-                                    <span><span className="price">${data[0][dataKeySetting['price']].toLocaleString()}</span>起</span></span>;
+                                    <span><span className="price">${data[0][dataKeySetting['price']].toLocaleString()}</span>起</span>
+                                </span>;
                             } else {
                                 return (
                                     <div className="info">
-                                        {data[0][dataKeySetting['guaranteed']] ? <span className="guaranteed guaranteed-y">成團</span> : <span className="guaranteed"></span>}
+                                        {data[0][dataKeySetting['guaranteed']] ?
+                                            <span className="guaranteed guaranteed-y">成團</span> : <span className="guaranteed"></span>
+                                        }
                                         <span className={(() => {
                                             switch (data[0][dataKeySetting['status']]) {
                                                 case '預定':
@@ -107,13 +111,19 @@ const Calendar = (props) => {
 
     const selectMonth = function (e) {
         const originallySelectedMonth = monthsSelected;
-        const clickedMonthIndex = allMonths.current.indexOf(e.currentTarget.className);
+        const clickedMonthIndex = allMonths.current.indexOf(e.currentTarget.id);
         if (originallySelectedMonth > clickedMonthIndex) {
             onClickPrev(e['target'],
-                completeData.filter((data) => { if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } }));
+                completeData.filter((data) => {
+                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data }
+                })
+            );
         } else if (originallySelectedMonth < clickedMonthIndex) {
             onClickNext(e['target'],
-                completeData.filter((data) => { if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } }));
+                completeData.filter((data) => {
+                    if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data }
+                })
+            );
         }
         setMonthsSelected(clickedMonthIndex);
     }
@@ -122,15 +132,21 @@ const Calendar = (props) => {
         const clickedMonthIndex = allMonths.current.indexOf(e.currentTarget.className);
         if (monthsSelected >= 1) {
             onClickPrev(e['target'],
-            completeData.filter((data) => { if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } }));
+                completeData.filter((data) => {
+                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data }
+                })
+            );
             setMonthsSelected(monthsSelected - 1);
         }
     }
-    
+
     const nextMonth = function (e) {
         const originallySelectedMonth = monthsSelected;
         onClickNext(e['target'],
-            completeData.filter((data) => { if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } }))
+            completeData.filter((data) => {
+                if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data }
+            })
+        )
         if (monthsSelected < allMonths.current.length - 1) {
             setMonthsSelected(monthsSelected + 1);
         }
@@ -141,17 +157,34 @@ const Calendar = (props) => {
         if (!completeData) { getData() }
     }, [completeData, getData]);
 
-    // set up an array storing years and month
+    // set up one array storing years and months, another for years and months from data
     useEffect(() => {
         if (completeData) {
-            allMonths.current = Array.from(new Set(completeData.map((data) => { return data['date'].substring(0, 7) }))).sort();
+            allMonths.current = new Array();
+            monthsInData.current = new Array();
+            for (let i = 0; i < 50; i++) {
+                const yyyymm = new Date('2016/01/01')
+                let yyyy, mm;
+                yyyymm.setMonth(i);
+                if (i > 0 && i % 11 === 0) {
+                    yyyymm.setUTCFullYear(yyyymm.getFullYear());
+                }
+                yyyy = yyyymm.getFullYear();
+                mm = (yyyymm.getMonth() + 1 < 10 ? 0 : '') + (yyyymm.getMonth() + 1).toString();
+                allMonths.current.push(yyyy + '/' + mm)
+            }
+            monthsInData.current = Array.from(
+                new Set(completeData.map((data) => { return data['date'].substring(0, 7) }))
+            ).sort();
         }
     });
 
     // setup with selected month
     useEffect(() => {
         if (typeof monthsSelected != 'number' && allMonths.current) {
-            allMonths.current.map((ele, i) => { if (ele.replace('/', '') === initYearMonth) { setMonthsSelected(i); } return i; });
+            allMonths.current.map((ele, i) => {
+                if (ele.replace('/', '') === initYearMonth) { setMonthsSelected(i); } return i;
+            });
         }
     });
 
@@ -185,7 +218,9 @@ const Calendar = (props) => {
             {typeof monthsSelected === 'number' ?
                 <div className="calender display-flex">
                     <div className="switch " onClick={switchMode}>
-                        {mode === 'dayMode' ? <span><i className="fas fa-list"></i> 切換列表顯示</span> : <span><i className="far fa-calendar-alt"></i> 切換月曆顯示</span>}
+                        {mode === 'dayMode' ?
+                            <span><i className="fas fa-list"></i> 切換列表顯示</span> :
+                            <span><i className="far fa-calendar-alt"></i> 切換月曆顯示</span>}
                     </div>
                     <div className="calendar-top display-flex">
                         <a className="arrow" href="/#" onClick={prevMonth}></a>
@@ -195,21 +230,28 @@ const Calendar = (props) => {
                                 .slice(monthsSelected < 1 ? 0 : monthsSelected === allMonths.current.length - 1 ? monthsSelected - 2 : monthsSelected - 1,
                                     monthsSelected < 1 ? monthsSelected + 3 : monthsSelected + 2)
                                 .map((ele, i) => {
-                                    return <li key={i} className={ele} onClick={selectMonth}>
-                                        <a href="/#" className={allMonths.current[monthsSelected] === ele ? 'selected' : ''}>{ele.replace('/', ' ')}月</a>
+                                    return <li key={i} id={ele} onClick={selectMonth}>
+                                        <a href="/#" className={allMonths.current[monthsSelected] === ele ? 'selected' : ''}>
+                                            {ele.replace('/', ' ')}月
+                                        </a>
+                                        {monthsInData.current.indexOf(ele) === -1 ?
+                                            <div className="no-data">本月無行程</div> : ''
+                                        }
                                     </li>
                                 })}
                         </ul>
                         <a className="arrow arrow-right" href="/#" onClick={nextMonth}></a>
                     </div>
                     <div className={mode}>
+                        {mode === 'listMode' && monthsInData.current.indexOf(allMonths.current[monthsSelected]) === -1 ?
+                            <div className="no-data">本月無行程</div> : ''
+                        }
                         <ul className="weekdays display-flex">
                             {weekdays.map((ele, i) => { return <li key={i} className="weekday">{ele}</li> })}
                         </ul>
                         <div className="month-days display-flex">
                             {productsThisMonth}
                         </div>
-                        <div className="pagePanel">1/2</div>
                     </div>
                 </div>
                 : ''}
