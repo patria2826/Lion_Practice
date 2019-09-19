@@ -5,8 +5,6 @@ $block-border: #f4f4f4 1px solid;
 @mixin calendar-basic-style {
   @content;
   .month-days {
-    border-right: $block-border;
-    border-bottom: $block-border;
     .days {
       font-size: 12px;
       &.selected,
@@ -149,10 +147,11 @@ body {
         }
         .no-data {
           width: 100%;
+          padding: 0;
           position: absolute;
           bottom: 0;
-          font-size: 13px;
-          color: #1c9c9d;
+          font-size: 14px;
+          color: #24a07c;
         }
       }
     }
@@ -175,6 +174,8 @@ body {
     @include calendar-basic-style {
       .month-days {
         flex-wrap: wrap;
+        border-right: $block-border;
+        border-bottom: $block-border;
         .days {
           width: calc(100% / 7);
           height: 85px;
@@ -228,12 +229,12 @@ body {
     .month-days {
       flex-flow: column;
       width: 100%;
-      border-right: $block-border;
-      border-bottom: $block-border;
+      border: none;
       .days {
         height: 62px;
         padding: 5px;
         border: $block-border;
+        border-top: none;
         font-size: 12px;
         &.selected {
           background-color: #fff9e3;
@@ -309,6 +310,8 @@ body {
     }
   }
   .no-data {
+    padding: 30px 0;
     text-align: center;
+    font-size: 18px;
   }
 }

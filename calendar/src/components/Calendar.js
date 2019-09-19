@@ -235,7 +235,7 @@ const Calendar = (props) => {
                                             {ele.replace('/', ' ')}月
                                         </a>
                                         {monthsInData.current.indexOf(ele) === -1 ?
-                                            <div className="no-data">本月無行程</div> : ''
+                                            <div className="no-data">無出發日</div> : ''
                                         }
                                     </li>
                                 })}
@@ -244,7 +244,7 @@ const Calendar = (props) => {
                     </div>
                     <div className={mode}>
                         {mode === 'listMode' && monthsInData.current.indexOf(allMonths.current[monthsSelected]) === -1 ?
-                            <div className="no-data">本月無行程</div> : ''
+                            <div className="no-data">本月無出發行程</div> : ''
                         }
                         <ul className="weekdays display-flex">
                             {weekdays.map((ele, i) => { return <li key={i} className="weekday">{ele}</li> })}
@@ -255,7 +255,6 @@ const Calendar = (props) => {
                     </div>
                 </div>
                 : ''}
-
         </div>
     )
 }

@@ -86,10 +86,11 @@ body {
 }
 .calender .calendar-top .month-list li .no-data {
   width: 100%;
+  padding: 0;
   position: absolute;
   bottom: 0;
-  font-size: 13px;
-  color: #1c9c9d;
+  font-size: 14px;
+  color: #24a07c;
 }
 .calender .dayMode .weekdays {
   justify-content: space-around;
@@ -107,6 +108,8 @@ body {
 }
 .calender .dayMode .month-days {
   flex-wrap: wrap;
+  border-right: #f4f4f4 1px solid;
+  border-bottom: #f4f4f4 1px solid;
 }
 .calender .dayMode .month-days .days {
   width: calc(100% / 7);
@@ -146,10 +149,6 @@ body {
   height: 20px;
   align-self: flex-end;
   line-height: 20px;
-}
-.calender .dayMode .month-days {
-  border-right: #f4f4f4 1px solid;
-  border-bottom: #f4f4f4 1px solid;
 }
 .calender .dayMode .month-days .days {
   font-size: 12px;
@@ -212,13 +211,13 @@ body {
 .listMode .month-days {
   flex-flow: column;
   width: 100%;
-  border-right: #f4f4f4 1px solid;
-  border-bottom: #f4f4f4 1px solid;
+  border: none;
 }
 .listMode .month-days .days {
   height: 62px;
   padding: 5px;
   border: #f4f4f4 1px solid;
+  border-top: none;
   font-size: 12px;
 }
 .listMode .month-days .days.selected {
@@ -291,10 +290,6 @@ body {
   bottom: 0;
   font-size: 16px;
 }
-.listMode .month-days {
-  border-right: #f4f4f4 1px solid;
-  border-bottom: #f4f4f4 1px solid;
-}
 .listMode .month-days .days {
   font-size: 12px;
 }
@@ -350,7 +345,9 @@ body {
   color: #e10500;
 }
 .listMode .no-data {
+  padding: 30px 0;
   text-align: center;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=Calendar.css.map */
