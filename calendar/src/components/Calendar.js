@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useImperativeHandle } from 'react';
 import axios from 'axios';
 import './css/Calendar.css';
 
-const Calendar = (props) => {
+const Calendar = React.forwardRef((props, ref) => {
     // set state and get props
     const [completeData, setCompleteData] = useState(0);
     const [monthsSelected, setMonthsSelected] = useState(undefined);
@@ -21,8 +21,9 @@ const Calendar = (props) => {
         '星期五',
         '星期六',
     ];
-    let allMonths = useRef();
-    let monthsInData = useRef();
+    const calendarRef = useRef();
+    const allMonths = useRef();
+    const monthsInData = useRef();
 
     // component for showing
     let productsThisMonth = daysArray.map((ele, i) => {
@@ -134,13 +135,36 @@ const Calendar = (props) => {
     }
 
     const setNextMonth = function (e) {
-        onClickNext(e['target'],
-            completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected])
-        )
         if (monthsSelected < allMonths.current.length - 1) {
+            onClickNext(e['target'],
+                completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected])
+            )
             setMonthsSelected(monthsSelected + 1);
         }
     }
+
+    // expose function to parent
+    useImperativeHandle(ref, () => ({
+        prevMonth() {
+            if (monthsSelected >= 1) {
+                console.log(completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected]))
+                setMonthsSelected(monthsSelected - 1);
+            }
+        },
+        nextMonth() {
+            if (monthsSelected < allMonths.current.length - 1) {
+                console.log(completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected]))
+                setMonthsSelected(monthsSelected + 1);
+            }
+        }
+        , switch() {
+            if (mode === 'dayMode') {
+                setMode('listMode');
+            } else {
+                setMode('dayMode');
+            }
+        }
+    }));
 
     // Life cycle
     useEffect(() => {
@@ -203,7 +227,7 @@ const Calendar = (props) => {
     }, [monthsSelected]);
 
     return (
-        <div>
+        <div ref={calendarRef}>
             {typeof monthsSelected === 'number' ?
                 <div className="calender display-flex">
                     <div className="switch " onClick={switchMode}>
@@ -246,7 +270,7 @@ const Calendar = (props) => {
                 : ''}
         </div>
     )
-}
+})
 
 Calendar.defaultProps = {
     dataSource: './data1.json',

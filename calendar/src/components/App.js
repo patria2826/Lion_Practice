@@ -2,9 +2,20 @@ import React from 'react';
 import Calendar from './Calendar';
 
 class App extends React.Component {
+    prevMonth = () => {
+        this.calendarRef.current.prevMonth();
+    }
+    nextMonth = () => {
+        this.calendarRef.current.nextMonth();
+    }
+    switch = () => {
+        this.calendarRef.current.switch();
+    }
+    calendarRef = React.createRef();
     render() {
         return (
             <Calendar
+                ref={this.calendarRef}
                 dataSource={'./data2.json'}
                 // initYearMonth={'201611'}
                 initYearMonth={'201705'}
