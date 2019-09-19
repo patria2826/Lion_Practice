@@ -156,8 +156,8 @@ const Calendar = React.forwardRef((props, ref) => {
                 console.log(completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected]))
                 setMonthsSelected(monthsSelected + 1);
             }
-        }
-        , switch() {
+        },
+        switch() {
             if (mode === 'dayMode') {
                 setMode('listMode');
             } else {
