@@ -9,7 +9,7 @@ const Calendar = (props) => {
     const [daysArray, setDaysArray] = useState([]);
     const [mode, setMode] = useState('dayMode');
     const [cellSelected, setCellSelected] = useState(0);
-    const { dataSource, initYearMonth, dataKeySetting, onClickPrev, onClickNext, onClickDate } = props;
+    const { dataSource, initYearMonth, dataKeySetting, onClickPrev, onClickNext, onClickDate, } = props;
 
     // set variants
     const weekdays = [
@@ -114,38 +114,28 @@ const Calendar = (props) => {
         const clickedMonthIndex = allMonths.current.indexOf(e.currentTarget.id);
         if (originallySelectedMonth > clickedMonthIndex) {
             onClickPrev(e['target'],
-                completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } else return []
-                })
+                completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex])
             );
         } else if (originallySelectedMonth < clickedMonthIndex) {
             onClickNext(e['target'],
-                completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } else return []
-                })
+                completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth])
             );
         }
         setMonthsSelected(clickedMonthIndex);
     }
 
-    const prevMonth = function (e) {
-        const clickedMonthIndex = allMonths.current.indexOf(e.currentTarget.className);
+    const setPrevMonth = function (e) {
         if (monthsSelected >= 1) {
             onClickPrev(e['target'],
-                completeData.filter((data) => {
-                    if (data['date'].substring(0, 7) === allMonths.current[clickedMonthIndex]) { return data } else return []
-                })
+                completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected])
             );
             setMonthsSelected(monthsSelected - 1);
         }
     }
 
-    const nextMonth = function (e) {
-        const originallySelectedMonth = monthsSelected;
+    const setNextMonth = function (e) {
         onClickNext(e['target'],
-            completeData.filter((data) => {
-                if (data['date'].substring(0, 7) === allMonths.current[originallySelectedMonth]) { return data } else return []
-            })
+            completeData.filter(data => data['date'].substring(0, 7) === allMonths.current[monthsSelected])
         )
         if (monthsSelected < allMonths.current.length - 1) {
             setMonthsSelected(monthsSelected + 1);
@@ -208,7 +198,6 @@ const Calendar = (props) => {
             while (daysarray.length < 42) {
                 daysarray.push('blank')
             }
-
             setDaysArray(daysarray);
         }
     }, [monthsSelected]);
@@ -223,7 +212,7 @@ const Calendar = (props) => {
                             <span><i className="far fa-calendar-alt"></i> 切換月曆顯示</span>}
                     </div>
                     <div className="calendar-top display-flex">
-                        <a className="arrow" href="/#" onClick={prevMonth}>{}</a>
+                        <a className="arrow" href="/#" onClick={setPrevMonth}>{}</a>
                         <ul className="month-list display-flex">
                             {allMonths.current
                                 // set three months for showing
@@ -240,7 +229,7 @@ const Calendar = (props) => {
                                     </li>
                                 })}
                         </ul>
-                        <a className="arrow arrow-right" href="/#" onClick={nextMonth}>{}</a>
+                        <a className="arrow arrow-right" href="/#" onClick={setNextMonth}>{}</a>
                     </div>
                     <div className={mode}>
                         {mode === 'listMode' && monthsInData.current.indexOf(allMonths.current[monthsSelected]) === -1 ?
